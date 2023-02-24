@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2f9fde08-5c2d-4152-bec5-4022c3aae9e7" name="ubuntu">
+        <fileTransfer rootFolder="/home/ubuntu/CoT-RNA-Transfer/" accessType="SFTP" host="54.227.32.57" port="22" sshConfigId="e208e3ad-2b0b-4fbf-8dc5-1f18a9b5b78f" sshConfig="AWS_capstone" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
