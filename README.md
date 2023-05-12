@@ -3,7 +3,6 @@
 **Complete Capstone Project by: Aihan Liu, Hsueh-Yi Lu**  
 **Master in Data Science, May 2023**
 
-<img src="presentation/Workflow.png" >
 
 
 ## Abstract
