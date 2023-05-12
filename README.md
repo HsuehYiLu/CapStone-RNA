@@ -3,7 +3,6 @@
 **Complete Capstone Project by: Aihan Liu, Hsueh-Yi Lu**  
 **Master in Data Science, May 2023**
 
-<img src="presentation/Workflow.png">
 
 ## Abstract
 This repository contains the complete capstone project that focuses on utilizing transformers to extract structure information from multi-sequences in order to enhance function learning. The project explores the application of CoT-Transfer Learning, deepBreaks, and GCN (Graph Convolutional Networks) for RNA structure prediction and function learning. The research investigates the impact of contact matrices, RNA cuts, and feature importance in understanding RNA structure and function.
