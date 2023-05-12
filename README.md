@@ -3,6 +3,8 @@
 **Complete Capstone Project by: Aihan Liu, Hsueh-Yi Lu**  
 **Master in Data Science, May 2023**
 
+<img src="presentation/Workflow.png">
+
 ## Abstract
 This repository contains the complete capstone project that focuses on utilizing transformers to extract structure information from multi-sequences in order to enhance function learning. The project explores the application of CoT-Transfer Learning, deepBreaks, and GCN (Graph Convolutional Networks) for RNA structure prediction and function learning. The research investigates the impact of contact matrices, RNA cuts, and feature importance in understanding RNA structure and function.
 
@@ -155,6 +157,8 @@ Follow these steps to use the deepBreaks environment and run the examples:
 2. To run the HIV.py file, execute the code and print out the plots to view the results.
 
 3. For different results, you can modify the sequence length and the number of sequences used for training in the code. Feel free to experiment with different values.
+
+4. Follow the steps of CoT-RNA-Transfer to get the contact matrix.
 
 
 
