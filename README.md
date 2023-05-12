@@ -1,6 +1,6 @@
 # Using Transformer to Extract Structure Information for Multi-Sequences to Boost Function Learning
 
-**Complete Capstone Project by: Aihan Liu, Hsuehyi Lu**  
+**Complete Capstone Project by: Aihan Liu, Hsueh-Yi Lu**  
 **Master in Data Science, May 2023**
 
 ## Abstract
