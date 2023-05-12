@@ -36,7 +36,6 @@ The project achieved high accuracy in contact prediction and provided insights i
 |                  | GCN (random contact)       | 900, 500     | 0.9376   |
 |                  | GCN (real contact)         | 900, 500     | 0.9376   |
 |                  | GCN (random contact)      | 300, 500      | 0.3469   |
-|------------------|--------------------------|---------------|----------|
 
 **Note:** The best ML method provided by deepBreaks was used for the logistic regression and extra trees classifier models.
 
@@ -147,6 +146,18 @@ or you can directly install if from GitHub:
 ```commandline
 python -m pip install git+https://github.com/omicsEye/deepbreaks
 ```
+
+## Guide
+Follow these steps to use the deepBreaks environment and run the examples:
+
+1. Make sure to set up the deepBreaks environment before running the examples.
+
+2. To run the HIV.py file, execute the code and print out the plots to view the results.
+
+3. For different results, you can modify the sequence length and the number of sequences used for training in the code. Feel free to experiment with different values.
+
+
+
 Citation:
 
 Mahdi Baghbanzadeh, Tyson Dawson, Bahar Sayoldin, Todd H. Oakley, Keith A. Crandall, Ali Rahnavard (2023). deepBreaks: a machine learning tool for identifying and prioritizing genotype-phenotype associations , https://github.com/omicsEye/deepBreaks/.
