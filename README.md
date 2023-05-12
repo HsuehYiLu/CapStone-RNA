@@ -147,6 +147,10 @@ or you can directly install if from GitHub:
 ```commandline
 python -m pip install git+https://github.com/omicsEye/deepbreaks
 ```
+Citation:
+
+Mahdi Baghbanzadeh, Tyson Dawson, Bahar Sayoldin, Todd H. Oakley, Keith A. Crandall, Ali Rahnavard (2023). deepBreaks: a machine learning tool for identifying and prioritizing genotype-phenotype associations , https://github.com/omicsEye/deepBreaks/.
+
 
 
 Please feel free to customize the template as needed and add any additional sections or information that may be relevant to your specific project.
