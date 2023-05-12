@@ -41,7 +41,7 @@ def main():
     parser.add_argument('--num_classes', default=37, type=int)
     parser.add_argument('--optim', default='AdamW', type=str)
     parser.add_argument('--lr', default=1e-4, type=float)
-    parser.add_argument('--batch_size', default=4, type=int)
+    parser.add_argument('--batch_size', default=1, type=int)
     parser.add_argument('--total_epoch', default=1000, type=int)
     parser.add_argument('--num_warmup_steps', default=0, type=int)
     parser.add_argument('--max_grad_norm', default=1.0, type=float)

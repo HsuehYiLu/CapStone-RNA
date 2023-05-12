@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="ubuntu" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="AWS_capstone" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="AWS">
         <serverdata>
@@ -23,10 +23,17 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="AWS_capstone">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/pycharm_project_264" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="ubuntu">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/CoT-RNA-Transfer" local="$PROJECT_DIR$" web="/" />
             <mapping local="" />
           </mappings>
         </serverdata>
@@ -53,5 +60,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

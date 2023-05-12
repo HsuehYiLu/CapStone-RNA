@@ -1,6 +1,6 @@
 #### import from coconet
-from pydca.contact_visualizer.contact_visualizer import DCAVisualizer
-from pydca.fasta_reader import fasta_reader
+### from pydca.contact_visualizer.contact_visualizer import DCAVisualizer
+### from pydca.fasta_reader import fasta_reader
 from inputreader import InputReader
 
 import subprocess
@@ -431,3 +431,181 @@ if __name__ == '__main__':
         main()
     except KeyboardInterrupt:
         pass
+
+import matplotlib.pyplot as plt
+def heatmap(M):
+
+    # create a random tensor of size (1, 128, 128) with values ranging from -100 to 37
+    tensor_matrix = M
+
+    # create a binary mask where the elements are 1 if the original element is between 0 and 10, otherwise 0
+    binary_mask = torch.where((tensor_matrix >= 0) & (tensor_matrix <= 10), torch.tensor(1), torch.tensor(0))
+
+    # plot the binary mask as a heatmap
+    plt.imshow(binary_mask[0], cmap='hot', interpolation='nearest')
+    plt.show()
+    return binary_mask[0]
+
+# b = heatmap(test_label)
+
+
+def counts(M):
+
+    adjacency_matrix = M
+
+    # Initialize the number of cuts to zero
+    num_cuts = 0
+
+    # Iterate over all pairs of vertices in the graph
+    for i in range(adjacency_matrix.shape[0]):
+        for j in range(i + 1, adjacency_matrix.shape[0]):
+
+            # Check if there is an edge between vertices i and j
+            if adjacency_matrix[i, j] == 1:
+
+                # Iterate over all other pairs of vertices in the graph
+                for k in range(adjacency_matrix.shape[0]):
+                    for l in range(k + 1, adjacency_matrix.shape[0]):
+
+                        # Check if there is an edge between vertices k and l
+                        if adjacency_matrix[k, l] == 1:
+
+                            # Check if there is a cut between vertices i and j and vertices k and l
+                            if (i <= k <= j < l) or (k < i <= l <= j):
+                                num_cuts += 1
+
+    print("Number of cuts:", (num_cuts))
+
+
+
+
+def diff(n,t):
+    z = n
+    # t = t.numpy()
+    for i in range(len(n)):
+        for j in range(len(n)):
+            if n[i,j] == 1 :
+                if t[i,j] == 0:
+                    z[i,j] = 100
+    z = np.where(z == 1, 50, z)
+    cmap = plt.cm.get_cmap('RdYlBu', 3)
+    plt.imshow(z, cmap=cmap)
+    plt.xticks(np.arange(z.shape[1]))
+    plt.yticks(np.arange(z.shape[0]))
+    plt.show()
+    return z
+
+# z = diff(pre,b)
+
+
+import numpy as np
+numpy_matrix = np.array([[0,0, 0, 1], [0,0,1,1], [0,1,0,1], [1,1,1,0]])
+teb_matrix = np.array([[1,0, 0, 1], [0,1,1,1], [0,1,1,0], [1,1,0,1]])
+
+#...........................................................................
+z1 = np.where(z == 50, 1, z)
+adjacency_matrix = z1
+
+# Initialize empty lists to record the indices of the 1s and 100s
+ones_indices = []
+hundreds_indices = []
+
+# Iterate over the adjacency matrix and record the indices of the 1s and 100s
+for i in range(adjacency_matrix.shape[0]):
+    for j in range(adjacency_matrix.shape[1]):
+        if adjacency_matrix[i, j] == 1:
+            ones_indices.append((i, j))
+        elif adjacency_matrix[i, j] == 100:
+            hundreds_indices.append((i, j))
+
+# Initialize a dictionary to record the cuts for each point
+cut_ones = {}
+cut_huns = {}
+# Iterate over the ones and hundreds indices and check for cuts
+for index in ones_indices:
+    i, j = index
+
+    # Check if there is an edge between vertices i and j
+    if adjacency_matrix[i, j] == 1 or adjacency_matrix[i, j] == 100:
+
+        # Iterate over all other pairs of vertices in the graph
+        for k in range(adjacency_matrix.shape[0]):
+            for l in range(k + 1, adjacency_matrix.shape[0]):
+
+                # Check if there is an edge between vertices k and l
+                if adjacency_matrix[k, l] == 1 or adjacency_matrix[k, l] == 100:
+
+                    # Check if there is a cut between vertices i and j and vertices k and l
+                    if (i <= k <= j < l) or (k < i <= l <= j):
+
+                        # Record the cuts for each point
+                        if index not in cut_ones:
+                            cut_ones[index] = 1
+                        else:
+                            cut_ones[index] += 1
+
+# Print the cuts for each point
+for point, num_cuts in cut_ones.items():
+    print(f"Point {point}: {num_cuts} cuts")
+cutones_array = np.array(list(cut_ones.values()))
+avg_cor = sum(cutones_array)/len(cutones_array)
+
+
+for index in hundreds_indices:
+    i, j = index
+
+    # Check if there is an edge between vertices i and j
+    if adjacency_matrix[i, j] == 1 or adjacency_matrix[i, j] == 100:
+
+        # Iterate over all other pairs of vertices in the graph
+        for k in range(adjacency_matrix.shape[0]):
+            for l in range(k + 1, adjacency_matrix.shape[0]):
+
+                # Check if there is an edge between vertices k and l
+                if adjacency_matrix[k, l] == 1 or adjacency_matrix[k, l] == 100:
+
+                    # Check if there is a cut between vertices i and j and vertices k and l
+                    if (i <= k <= j < l) or (k < i <= l <= j):
+
+                        # Record the cuts for each point
+                        if index not in cut_huns:
+                            cut_huns[index] = 1
+                        else:
+                            cut_huns[index] += 1
+
+# Print the cuts for each point
+for point, num_cuts in cut_huns.items():
+    print(f"Point {point}: {num_cuts} cuts")
+cuthuns_array = np.array(list(cut_huns.values()))
+avg_error = sum(cuthuns_array)/len(cuthuns_array)
+
+#............................plot
+
+cuts_ones = cutones_array
+cuts_hundreds = cuthuns_array
+
+data = [cuts_ones, cuts_hundreds]
+
+# plotting the box plot horizontally
+mean_cutones = np.mean(cutones_array)
+mean_cuthuns = np.mean(cuthuns_array)
+# creating the data list for the boxplot
+data = [cutones_array, cuthuns_array]
+# plotting the box plot horizontally
+box = plt.boxplot(data, vert=False, patch_artist=True)
+# setting the fill color for each box
+colors = ['pink', 'lightblue']
+for patch, color in zip(box['boxes'], colors):
+    patch.set_facecolor(color)
+# adding mean lines to the plot with different colors
+plt.axvline(x=mean_cutones, color='red', linestyle='--', label='Mean of correct')
+plt.axvline(x=mean_cuthuns, color='blue', linestyle='--', label='Mean of error')
+# setting the y-axis labels and legend
+plt.yticks([1, 2], ['Correct', 'Error'])
+plt.ylabel('Points')
+plt.legend(loc='lower right')
+# setting the axis labels and title
+plt.xlabel('Cuts Number')
+plt.title('Box Plot of Cut Numbers')
+# displaying the plot
+plt.show()
